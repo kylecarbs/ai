@@ -365,7 +365,7 @@ export async function processChatResponse({
     },
     onStartStepPart(value) {
       // keep message id stable when we are updating an existing message:
-      if (!replaceLastMessage) {
+      if (!replaceLastMessage && !message.parts.find((part) => part.type === "step-start")) {
         message.id = value.messageId;
       }
 
